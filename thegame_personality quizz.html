@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f3ead9">
+  <title>GAME — personality & intention</title>
+  <link rel="stylesheet" href="thegame.css?v=20250322-fluid" id="game-stylesheet">
+  <script>
+  (function(){
+    var el=document.getElementById('game-stylesheet');
+    if(!el) return;
+    try{ el.href=new URL(el.getAttribute('href')||'thegame.css', document.baseURI||location.href).href; }catch(e){}
+  })();
+  </script>
+</head>
+<body>
+  <div id="app" class="app view-fw">
+    <nav class="nav-pill" aria-label="Main">
+      <button type="button" id="btn-fw" class="nav-pill__btn is-active" onclick="showFW()">The four types</button>
+      <button type="button" id="btn-qz" class="nav-pill__btn" onclick="showQZ()">Take the quiz</button>
+    </nav>
+
+    <!-- FRAMEWORK -->
+    <div id="fw">
+      <header class="hero">
+        <h1 class="hero__letters">
+          <span>G</span><span>A</span><span>M</span><span>E</span>
+        </h1>
+        <p class="hero__types-line">Grabber <span class="hero__dot" aria-hidden="true">·</span> Aligner <span class="hero__dot" aria-hidden="true">·</span> Multiplier <span class="hero__dot" aria-hidden="true">·</span> Easer</p>
+        <p class="hero__tagline">A personality taxonomy rooted in intention</p>
+      </header>
+
+      <p class="hero-hint">Tap a card to expand details.</p>
+
+      <div class="type-grid">
+        <div class="type-stack">
+          <div role="button" tabindex="0" id="card-G" class="type-card" aria-expanded="false" aria-controls="det-G" onclick="tog('G')" onkeydown="keyTog(event,'G')">
+            <div class="type-card__head">
+              <span class="type-card__letter">G</span>
+              <span class="type-card__name">Grabber</span>
+            </div>
+            <p class="type-card__blurb">Takes energy from systems. Zero-sum by instinct. Plays to win at others' expense.</p>
+          </div>
+          <div id="det-G" class="detail-panel" hidden>
+        <div class="detail-panel__kicker">Finite game · Zero-sum · The wolf</div>
+        <div class="detail-panel__cols">
+          <div>
+            <div class="detail-panel__label">Characteristics</div>
+            <div class="detail-panel__body">Every interaction framed as a transaction with a winner.<br>Charm deployed as tool, not expression.<br>Scarcity as worldview, not circumstance.<br>Extracts status, credit, attention, resources.<br>Rationalization is their primary cognitive tool.</div>
+          </div>
+          <div>
+            <div class="detail-panel__label">Benefits / risks</div>
+            <div class="detail-panel__body">Short-term: fast, visible results.<br>Tactical clarity — knows exactly what they want.<br>Depletes ecosystems and poisons trust.<br>Easers enable them; Aligners freeze them out.<br>Long-term: systemic collapse or lonely exile.</div>
+          </div>
+        </div>
+        <div class="detail-panel__example">
+          <div class="detail-panel__label">Situational example</div>
+          <div class="detail-panel__body">Steers credit toward themselves in real time. In friendship, calls only when they need something — framed as catching up. When confronted: genuine confusion, then victimhood, then reframe. Never the author of their own harm.</div>
+        </div>
+          </div>
+        </div>
+
+        <div class="type-stack">
+          <div role="button" tabindex="0" id="card-A" class="type-card" aria-expanded="false" aria-controls="det-A" onclick="tog('A')" onkeydown="keyTog(event,'A')">
+            <div class="type-card__head">
+              <span class="type-card__letter">A</span>
+              <span class="type-card__name">Aligner</span>
+            </div>
+            <p class="type-card__blurb">Matches energy given. Logical reciprocity. Fair, firm, hard to exploit.</p>
+          </div>
+          <div id="det-A" class="detail-panel" hidden>
+        <div class="detail-panel__kicker">Conditional game · Tit-for-tat · The mirror</div>
+        <div class="detail-panel__cols">
+          <div>
+            <div class="detail-panel__label">Characteristics</div>
+            <div class="detail-panel__body">Reciprocity as operating principle, not just tactic.<br>Empathy functions analytically — reads rooms precisely.<br>Generous by default, switches off cleanly when exploited.<br>Tracks fairness without making it a drama.<br>Can forgive once — but remembers everything.</div>
+          </div>
+          <div>
+            <div class="detail-panel__label">Benefits / risks</div>
+            <div class="detail-panel__body">Stabilizing in functional systems.<br>Natural immune response to Grabbers.<br>Trustworthy precisely because conditional.<br>Can become mechanical — relationships as ledgers.<br>Misread as cold when merely consistent.</div>
+          </div>
+        </div>
+        <div class="detail-panel__example">
+          <div class="detail-panel__label">Situational example</div>
+          <div class="detail-panel__body">Gives honest feedback, expects the same. Lends support generously the first time, attentively the second, measuredly the third. Names a dynamic once, clearly — then adjusts behavior without ceremony. Doesn't punish. Just stops.</div>
+        </div>
+          </div>
+        </div>
+
+        <div class="type-stack">
+          <div role="button" tabindex="0" id="card-M" class="type-card" aria-expanded="false" aria-controls="det-M" onclick="tog('M')" onkeydown="keyTog(event,'M')">
+            <div class="type-card__head">
+              <span class="type-card__letter">M</span>
+              <span class="type-card__name">Multiplier</span>
+            </div>
+            <p class="type-card__blurb">Creates energy. Infinite game player. Believes 1+1=3 and acts accordingly.</p>
+          </div>
+          <div id="det-M" class="detail-panel" hidden>
+        <div class="detail-panel__kicker">Infinite game · Abundance · The gardener</div>
+        <div class="detail-panel__cols">
+          <div>
+            <div class="detail-panel__label">Characteristics</div>
+            <div class="detail-panel__body">1+1=3 as genuine belief, not motivational poster.<br>Invests in others' potential without being asked.<br>Trust as a generative, renewable resource.<br>Sees systems, ecosystems, long arcs.<br>Gets genuine pleasure from others' growth.</div>
+          </div>
+          <div>
+            <div class="detail-panel__label">Benefits / risks</div>
+            <div class="detail-panel__body">Creates compounding value across communities.<br>Leaves institutions genuinely better.<br>Vulnerable to Grabbers without Aligner instincts.<br>Can be idealistic past what systems can bear.<br>Boundaryless generosity becomes enabling.</div>
+          </div>
+        </div>
+        <div class="detail-panel__example">
+          <div class="detail-panel__label">Situational example</div>
+          <div class="detail-panel__body">Introduces two people with zero agenda. Mentors and takes deep pleasure watching others surpass them. Builds cultures that outlast their presence. Looks naive until you map the network they built over a decade.</div>
+        </div>
+          </div>
+        </div>
+
+        <div class="type-stack">
+          <div role="button" tabindex="0" id="card-E" class="type-card" aria-expanded="false" aria-controls="det-E" onclick="tog('E')" onkeydown="keyTog(event,'E')">
+            <div class="type-card__head">
+              <span class="type-card__letter">E</span>
+              <span class="type-card__name">Easer</span>
+            </div>
+            <p class="type-card__blurb">Gives energy away. Self-erasing. The Grabber's unwitting accomplice.</p>
+          </div>
+          <div id="det-E" class="detail-panel" hidden>
+        <div class="detail-panel__kicker">Self-negating · Fading · The martyr</div>
+        <div class="detail-panel__cols">
+          <div>
+            <div class="detail-panel__label">Characteristics</div>
+            <div class="detail-panel__body">Gives without accounting — often without awareness.<br>Conflict-averse to a self-erasing degree.<br>Kindness as identity, not merely a value.<br>Absorbs tension so others don't have to feel it.<br>Confuses presence with disappearance.</div>
+          </div>
+          <div>
+            <div class="detail-panel__label">Benefits / risks</div>
+            <div class="detail-panel__body">Smooths friction, holds groups together short-term.<br>Often deeply loved — but not deeply known.<br>Primary operational enabler of Grabbers.<br>Repressed resentment surfaces as collapse.<br>Their absence, when it comes, shocks everyone.</div>
+          </div>
+        </div>
+        <div class="detail-panel__example">
+          <div class="detail-panel__label">Situational example</div>
+          <div class="detail-panel__body">Apologizes for the thing done to them. Stays long past the point of health because leaving feels selfish. Becomes invisible glue nobody notices until it dissolves. When they finally collapse, everyone says: but they seemed so fine.</div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="qz" class="quiz-panel" hidden>
+      <div id="prog" class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="1" aria-label="Quiz progress"></div>
+      <div id="qbody"></div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="rs" class="result-panel" hidden>
+      <div id="rbody"></div>
+    </div>
+  </div>
+
+  <script>
+  var QS=[
+    {t:"Someone asks for a favor you didn't expect and can't easily do.",c:"You're genuinely busy. They're not in crisis — just would benefit from your help.",a:[
+      {x:"Weigh whether this serves me. If not, I'll find a graceful way out.",k:'g'},
+      {x:"Calculate what they've done for me lately, then decide.",k:'a'},
+      {x:"See it as a chance to invest in the relationship — effort now, surplus later.",k:'m'},
+      {x:"Say yes even though I'll resent it. Their need matters more right now.",k:'e'}]},
+    {t:"You're in a meeting where someone takes credit for work you did.",c:"It's visible to everyone. The moment to correct it in real time has passed.",a:[
+      {x:"Note it, say nothing now — but adjust how I share work with this person going forward.",k:'a'},
+      {x:"Find a moment later to reestablish the record, directly and without drama.",k:'m'},
+      {x:"Let it go. Making it about me feels petty, even if it wasn't fair.",k:'e'},
+      {x:"Make sure the right people know the truth. One way or another.",k:'g'}]},
+    {t:"You achieved something significant. How do you talk about it?",c:"With people you trust. Not a performance — just a real conversation.",a:[
+      {x:"Share the whole story, including everyone who helped make it happen.",k:'m'},
+      {x:"Give the facts. Credit where it's due, mine included.",k:'a'},
+      {x:"Make sure they understand the full scale of what I pulled off.",k:'g'},
+      {x:"Downplay it. I don't want anyone to feel diminished by comparison.",k:'e'}]},
+    {t:"What is your honest relationship to other people's success?",c:"Not your ideal self. Your actual, unfiltered gut response.",a:[
+      {x:"Genuinely happy for them — their win doesn't shrink what's available for me.",k:'m'},
+      {x:"Happy for them, but I'm also tracking where I stand relative to them.",k:'a'},
+      {x:"Depends entirely on whether they deserved it more than I did.",k:'g'},
+      {x:"Happy for them, quietly suppressing what I feel about myself by comparison.",k:'e'}]},
+    {t:"Someone in your circle is subtly manipulative — draining energy, not reciprocating.",c:"Nothing catastrophic. Just a slow leak you've been tolerating.",a:[
+      {x:"Name it clearly and recalibrate the dynamic. Once, plainly.",k:'a'},
+      {x:"Try to understand what wound is driving it. Extend more care, not less.",k:'m'},
+      {x:"Keep absorbing it. I don't want to damage the relationship by making it weird.",k:'e'},
+      {x:"Nothing wrong with that — I probably operate similarly when I need to.",k:'g'}]},
+    {t:"You can recommend someone for a role. They're good — but so are you.",c:"Recommending them doesn't directly cost you the spot. But it shifts the field.",a:[
+      {x:"Recommend them wholeheartedly. Good people getting opportunities is the point.",k:'m'},
+      {x:"Recommend them if they'd do the same for me.",k:'a'},
+      {x:"Pass. My energy goes toward securing my own position first.",k:'g'},
+      {x:"Recommend them and quietly wonder if I should have put myself forward instead.",k:'e'}]},
+    {t:"What's your honest relationship to scarcity — resources, attention, credit?",c:"Not your philosophy. What you feel in your body when things get tight.",a:[
+      {x:"Scarcity is mostly a story. I'd rather expand the pie.",k:'m'},
+      {x:"I need to protect what I've earned. Not everyone plays fair.",k:'g'},
+      {x:"I track fairness carefully. Generous when safe, guarded when not.",k:'a'},
+      {x:"I often give more than I get. It bothers me but I rarely say so.",k:'e'}]},
+    {t:"A close friend gets a big opportunity you also wanted and were qualified for.",c:"No obvious reason they got it and you didn't. It just happened that way.",a:[
+      {x:"Feel the sting fully, then genuinely celebrate. The field isn't zero-sum.",k:'m'},
+      {x:"Support them warmly, process privately, then redirect toward my next move.",k:'a'},
+      {x:"Quietly wonder if the process was actually fair. Probably not.",k:'g'},
+      {x:"Act like I'm fine. My disappointment would make them feel guilty.",k:'e'}]},
+    {t:"How do you think about people who regularly rely on you for support or energy?",c:"The ones who come to you often — not in crisis, just habitually.",a:[
+      {x:"I feel responsible for them. Sometimes heavy, but I can't really turn it off.",k:'e'},
+      {x:"Happy to help within reason. Needs to stay mutual or it depletes me.",k:'a'},
+      {x:"These are long-game investments. I want to see them become self-sufficient.",k:'m'},
+      {x:"Useful relationships. But dependency in others doesn't particularly move me.",k:'g'}]},
+    {t:"What does 'winning' actually look like to you?",c:"Not the interview answer. The one you feel when you're honest.",a:[
+      {x:"Being clearly ahead of the relevant competition.",k:'g'},
+      {x:"Getting what I've earned — no more, no less.",k:'a'},
+      {x:"Watching something I helped build continue without me.",k:'m'},
+      {x:"The people I love being okay. If they're okay, I'm okay.",k:'e'}]},
+    {t:"When something goes wrong in a relationship, what's your first instinct?",c:"Before any analysis. The raw first move.",a:[
+      {x:"Figure out who's responsible and make sure the accounting is accurate.",k:'a'},
+      {x:"Understand what deeper dynamic broke down and whether it can be repaired.",k:'m'},
+      {x:"Protect myself from further damage. Explain my position.",k:'g'},
+      {x:"Apologize — even when I'm not sure it was my fault. It's easier than conflict.",k:'e'}]},
+    {t:"When honest with yourself about your shadow side, what do you recognize?",c:"Not the worst thing you've done — the pattern you keep doing.",a:[
+      {x:"I can be transactional and cold. I meter out warmth based on what I'm getting.",k:'a'},
+      {x:"I disappear. I erase myself and call it virtue.",k:'e'},
+      {x:"I can be ruthless when I want something badly enough. I justify it after.",k:'g'},
+      {x:"I'm so focused on the bigger picture I sometimes miss what's right in front of me.",k:'m'}]}
+  ];
+
+  var TD={
+    g:{name:'Grabber',sub:'FINITE GAME · ZERO-SUM · THE WOLF',col:'#b84020',
+      desc:"You operate with sharp awareness of power dynamics and a clear-eyed drive to protect your position. At your best you are incisive, strategic, and decisive. The honest observation — not the moral lecture — is that the field you're depleting is the same one you depend on.",
+      shadow:"The deepest risk isn't getting caught. It's the slow starvation of a life where every person is a resource and nothing is genuinely shared. Power without trust is just exhaustion with better furniture."},
+    a:{name:'Aligner',sub:'TIT-FOR-TAT · CALIBRATED RECIPROCITY',col:'#2060a8',
+      desc:"You are a stabilizing force — fair, consistent, hard to exploit. Your empathy is real but analytical, your generosity conditional and therefore trustworthy. The invitation is to occasionally give without keeping score — not to become an Easer, but to discover what asymmetric generosity opens up that reciprocity can't.",
+      shadow:"Rigidity dressed up as fairness. When the ledger becomes the point, relationships stop being alive. True fairness sometimes requires giving more than you've received — as a bet on what's possible, not a failure of accounting."},
+    m:{name:'Multiplier',sub:'INFINITE GAME · ABUNDANCE · THE GARDENER',col:'#107850',
+      desc:"You are a rare force — someone who genuinely makes the field larger by being on it. You build trust, see the long arc, invest without agenda. The invitation is to pair your generosity with Aligner discernment. Not every field is safe to garden in. A spine doesn't make you less generous — it makes you sustainable.",
+      shadow:"Naive exposure. Love and trust extended without protection depletes the very resource you're here to generate. The world needs you intact more than it needs you spent."},
+    e:{name:'Easer',sub:'SELF-NEGATING · FADING · THE MARTYR',col:'#a03050',
+      desc:"Your care is real and your impact profound — people feel genuinely held near you. The urgent invitation: your disappearance is not nobility. It is unavailability. The world doesn't need your sacrifice of yourself. It needs your full, boundaried, opinionated, present self.",
+      shadow:"The Easer is the Grabber's most necessary accomplice — not from malice, but from conflict-avoidance raised to a life philosophy. Every time you absorb what should be named, you make the harmful dynamic possible for one more day."}
+  };
+
+  var HY={
+    gm:{name:'The Visionary Predator',desc:"Big-picture systems thinker whose abundance framing can mask sharp self-interest underneath. You build things that genuinely help people, and you also ensure you benefit most from what you build. The question worth sitting with: who, exactly, are you building for?"},
+    ga:{name:'The Calculated Operator',desc:"You know exactly what you want and track the field precisely. You'll cooperate when optimal and extract when available. You have a code — but the code is fundamentally about protecting your position, not creating value."},
+    ge:{name:'The Conflicted Taker',desc:"You take, and you feel bad about it — possibly the most exhausting combination. Genuine care alongside real self-serving instincts, warring constantly. Guilt-driven giving that still somehow benefits you, followed by resentment in both directions."},
+    ma:{name:'The Grounded Visionary',desc:"Arguably the healthiest combination. Abundance belief with clear limits. You build generously and sustainably, notice when dynamics are off, and protect the generative space you're trying to create."},
+    me:{name:'The Depleted Idealist',desc:"Genuinely wants to generate good and is willing to sacrifice self to do it. The danger: burnout without limits. Your abundance belief is real, but unprotected energy means the garden eventually runs dry."},
+    ae:{name:'The Burnt-Out Peacekeeper',desc:"You track fairness precisely but absorb far more than you should to keep the peace. You know when things are off — you feel it clearly — but you often don't act. The internal ledger fills quietly. When you finally stop, everyone is confused."}
+  };
+
+  var cur=0,sc={g:0,a:0,m:0,e:0};
+  var fromSharedLink=false;
+
+  function parseScoresFromSearch(){
+    try{
+      var q=new URLSearchParams(window.location.search);
+      var g=parseInt(q.get('g'),10),a=parseInt(q.get('a'),10),m=parseInt(q.get('m'),10),e=parseInt(q.get('e'),10);
+      if([g,a,m,e].some(function(x){ return isNaN(x)||x<0||x>12; })) return null;
+      if(g+a+m+e!==12) return null;
+      return {g:g,a:a,m:m,e:e};
+    }catch(x){ return null; }
+  }
+
+  function clearShareParams(){
+    try{
+      var u=new URL(window.location.href);
+      if(!u.search) return;
+      u.search='';
+      history.replaceState({}, '', u.pathname+u.hash);
+    }catch(x){}
+  }
+
+  function buildShareUrl(){
+    try{
+      var u=new URL(window.location.href);
+      u.search='';
+      u.searchParams.set('g', String(sc.g));
+      u.searchParams.set('a', String(sc.a));
+      u.searchParams.set('m', String(sc.m));
+      u.searchParams.set('e', String(sc.e));
+      return u.toString();
+    }catch(x){
+      var base=location.href.split('?')[0];
+      return base+'?g='+sc.g+'&a='+sc.a+'&m='+sc.m+'&e='+sc.e;
+    }
+  }
+
+  function copyShareLink(btn){
+    var url=buildShareUrl();
+    var done=function(){
+      if(btn){
+        var t=btn.getAttribute('data-label');
+        if(!t) t=btn.textContent;
+        btn.textContent='Copied';
+        setTimeout(function(){ btn.textContent=t; }, 2000);
+      }
+    };
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done).catch(function(){ window.prompt('Copy link:', url); });
+    } else {
+      window.prompt('Copy link:', url);
+    }
+  }
+
+  function setView(mode){
+    var app=document.getElementById('app');
+    app.classList.remove('view-fw','view-qz','view-rs');
+    app.classList.add('view-'+mode);
+  }
+
+  function showFW(){
+    setView('fw');
+    document.getElementById('fw').hidden=false;
+    document.getElementById('qz').hidden=true;
+    document.getElementById('qz').classList.remove('is-visible');
+    document.getElementById('rs').hidden=true;
+    document.getElementById('rs').classList.remove('is-visible');
+    document.getElementById('btn-fw').classList.add('is-active');
+    document.getElementById('btn-qz').classList.remove('is-active');
+  }
+
+  function showQZ(){
+    if(cur>=QS.length){
+      cur=0;sc={g:0,a:0,m:0,e:0};
+    }
+    clearShareParams();
+    setView('qz');
+    document.getElementById('fw').hidden=true;
+    document.getElementById('qz').hidden=false;
+    document.getElementById('qz').classList.add('is-visible');
+    document.getElementById('rs').hidden=true;
+    document.getElementById('rs').classList.remove('is-visible');
+    document.getElementById('btn-fw').classList.remove('is-active');
+    document.getElementById('btn-qz').classList.add('is-active');
+    renderQ();
+  }
+
+  function keyTog(ev,id){
+    if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); tog(id); }
+  }
+
+  function tog(id){
+    var el=document.getElementById('det-'+id);
+    var card=document.getElementById('card-'+id);
+    var opening=el.hidden;
+    ['G','A','M','E'].forEach(function(x){
+      var p=document.getElementById('det-'+x);
+      var c=document.getElementById('card-'+x);
+      if(p&&p!==el){
+        p.hidden=true;
+        if(c) c.setAttribute('aria-expanded','false');
+      }
+    });
+    if(opening){
+      el.hidden=false;
+      if(card) card.setAttribute('aria-expanded','true');
+    } else {
+      el.hidden=true;
+      if(card) card.setAttribute('aria-expanded','false');
+    }
+  }
+
+  function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
+
+  function renderProg(){
+    var h='';
+    for(var i=0;i<QS.length;i++){
+      var cls='prog__seg';
+      if(i<cur) cls+=' prog__seg--done';
+      else if(i===cur) cls+=' prog__seg--current';
+      h+='<div class="'+cls+'"></div>';
+    }
+    var prog=document.getElementById('prog');
+    prog.innerHTML=h;
+    prog.setAttribute('aria-valuemax',String(QS.length));
+    prog.setAttribute('aria-valuenow',String(Math.min(cur+1,QS.length)));
+  }
+
+  function renderQ(){
+    if(cur>=QS.length){showResult();return;}
+    renderProg();
+    var q=QS[cur],ans=shuf(q.a),h='';
+    h+='<p class="q-meta">Question '+(cur+1)+' of '+QS.length+'</p>';
+    h+='<h2 class="q-title">'+q.t+'</h2>';
+    h+='<p class="q-context">'+q.c+'</p>';
+    ans.forEach(function(a){
+      h+='<button type="button" class="opt-btn" data-k="'+a.k+'" onclick="pick(this)">'+a.x+'</button>';
+    });
+    document.getElementById('qbody').innerHTML=h;
+  }
+
+  function pick(btn){
+    var k=btn.getAttribute('data-k');
+    document.querySelectorAll('#qbody .opt-btn').forEach(function(b){ b.classList.remove('is-picked'); });
+    btn.classList.add('is-picked');
+    sc[k]++;cur++;
+    setTimeout(renderQ,400);
+  }
+
+  function showResult(){
+    var openedFromShare=fromSharedLink;
+    fromSharedLink=false;
+
+    var tot=sc.g+sc.a+sc.m+sc.e;
+    var ent=[['g',sc.g],['a',sc.a],['m',sc.m],['e',sc.e]];
+    ent.sort(function(x,y){return y[1]-x[1];});
+    var top=ent[0][0],sec=ent[1][0];
+    var td=TD[top];
+    var lbl={g:'Grabber',a:'Aligner',m:'Multiplier',e:'Easer'};
+    var p2=Math.round(ent[1][1]/tot*100);
+    var hk=top+sec;if(!HY[hk])hk=sec+top;
+    var hy=HY[hk];
+
+    var bars='<div class="bars">';
+    ent.forEach(function(e){
+      var pct=Math.round(e[1]/tot*100);
+      bars+='<div class="bar-row">';
+      bars+='<div class="bar-label">'+lbl[e[0]]+'</div>';
+      bars+='<div class="bar-track"><div class="bar-fill" style="width:'+pct+'%"></div></div>';
+      bars+='<div class="bar-pct">'+pct+'%</div></div>';
+    });
+    bars+='</div>';
+
+    var hyHtml='';
+    if(p2>=20&&hy){
+      hyHtml='<div class="result-block"><div class="result-block__kicker">Your hybrid type</div>';
+      hyHtml+='<div class="result-block__title">'+hy.name+'</div>';
+      hyHtml+='<p class="hybrid-desc">'+hy.desc+'</p></div>';
+    }
+
+    var html='';
+    if(openedFromShare){
+      html+='<div class="result-share-banner" role="status"><p class="result-share-banner__text">You’re viewing a <strong>shared snapshot</strong> — not your own answers. <button type="button" class="result-share-banner__cta" onclick="restart()">Take the quiz yourself</button></p></div>';
+    }
+    html+='<div class="result-hero">';
+    html+='<div class="result-letter">'+top.toUpperCase()+'</div>';
+    html+='<div class="result-name">'+td.name+'</div>';
+    html+='<div class="result-sub">'+td.sub+'</div>';
+    if(p2>=20) html+='<p class="result-blend">Primary '+lbl[top]+' · significant '+lbl[sec]+' tendencies</p>';
+    html+='</div>';
+    html+=bars;
+    html+='<div class="result-block result-block--accent"><p class="result-desc">'+td.desc+'</p></div>';
+    html+=hyHtml;
+    html+='<div class="result-shadow"><div class="result-shadow__label">Your shadow</div><p class="result-shadow__body">'+td.shadow+'</p></div>';
+    html+='<div class="result-actions">';
+    html+='<button type="button" class="btn-primary" onclick="copyShareLink(this)" data-label="Share result">Share result</button>';
+    html+='<button type="button" class="btn-ghost" onclick="restart()">retake the quiz</button>';
+    html+='<button type="button" class="btn-ghost" onclick="showFW()">Back to the four types</button>';
+    html+='</div>';
+
+    document.getElementById('rbody').innerHTML=html;
+    setView('rs');
+    document.getElementById('fw').hidden=true;
+    document.getElementById('qz').hidden=true;
+    document.getElementById('qz').classList.remove('is-visible');
+    document.getElementById('rs').hidden=false;
+    document.getElementById('rs').classList.add('is-visible');
+    document.getElementById('btn-fw').classList.remove('is-active');
+    document.getElementById('btn-qz').classList.remove('is-active');
+  }
+
+  function restart(){
+    cur=0;sc={g:0,a:0,m:0,e:0};
+    clearShareParams();
+    showQZ();
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var snap=parseScoresFromSearch();
+    if(snap){
+      sc=snap;
+      cur=QS.length;
+      fromSharedLink=true;
+      showResult();
+    }
+  });
+  </script>
+</body>
+</html>
